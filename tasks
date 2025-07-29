@@ -1,0 +1,101 @@
+✅ 1. STAGE ALL CHANGES & COMMIT
+
+git add .
+git commit -m "Your meaningful commit message"
+
+-----------------------------------------------
+✅ 2. MOVE COMMITS TO CORRECT BRANCH
+-----------------------------------------------
+
+# Step 1: Switch to the correct branch
+git checkout correct-branch
+
+# Step 2: Cherry-pick commits from the wrong branch
+git cherry-pick <commit-hash>
+
+# (Repeat for multiple commits or use a range like: start_hash^..end_hash)
+
+# Step 3: Reset the wrong branch to remove the commits
+git checkout wrong-branch
+git reset --hard HEAD~n    # Replace n with number of commits to undo
+
+--------------------------------------------------------
+✅ 3. CREATE NEW BRANCH, COMMIT CHANGES, PUSH TO GITHUB
+--------------------------------------------------------
+
+git checkout -b feature-branch   # Create and switch to new branch
+
+git add .
+git commit -m "Add new feature"
+
+git push origin feature-branch   # Push to GitHub
+
+-------------------------------------------------------
+✅ 4. CONTRIBUTE TO OPEN-SOURCE PROJECT ON GITHUB
+-------------------------------------------------------
+
+# Step 1: Fork the repository on GitHub
+
+# Step 2: Clone your fork locally
+git clone https://github.com/your-username/project-name.git
+cd project-name
+
+# Step 3: Create and switch to a feature branch
+git checkout -b feature-branch
+
+# Step 4: Make changes and commit
+git add .
+git commit -m "Describe your changes"
+
+# Step 5: Push your branch to GitHub
+git push origin feature-branch
+
+# Step 6: Create a Pull Request on GitHub from your fork
+
+-------------------------------------------------
+✅ 5. RESOLVE MERGE CONFLICTS WITH MAIN BRANCH
+-------------------------------------------------
+
+git fetch origin
+git checkout your-branch
+git merge origin/main
+
+# If conflicts appear:
+# - Open conflicting files
+# - Look for conflict markers: <<<<<<<, =======, >>>>>>>
+# - Edit to resolve, then save
+
+git add <resolved-file>
+git commit     # Finalize the merge
+
+--------------------------------------------------------
+✅ 6. CREATE FEATURE BRANCH FROM LATEST MAIN BRANCH
+--------------------------------------------------------
+
+git checkout main
+git pull origin main     # Ensure main is up to date
+
+git checkout -b new-feature-branch   # Create and switch to new branch
+
+--------------------------------------------------------
+✅ 7. REVERT TO SPECIFIC COMMIT & DISCARD LATER CHANGES
+--------------------------------------------------------
+
+git reset --hard <commit-hash>   # WARNING: Deletes all commits after the hash
+
+# If already pushed and you want to overwrite:
+git push origin HEAD --force
+
+--------------------------------------------------------
+✅ 8. RESTORE A DELETED FILE FROM PREVIOUS COMMIT
+--------------------------------------------------------
+
+# If file was recently deleted and committed:
+git checkout HEAD^ -- path/to/deleted-file
+
+git add path/to/deleted-file
+git commit -m "Restored deleted file"
+
+# If file was deleted several commits ago:
+git checkout <older-commit-hash> -- path/to/deleted-file
+
